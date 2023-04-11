@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "민방위 교육 Notification",
+  "version": "1.0",
+  "description": "Send notifications for video events on https://kcmes.or.kr/edu/detail",
+  "permissions": [
+    "notifications",
+    "declarativeContent"
+  ],
+  "host_permissions": [
+    "https://kcmes.or.kr/"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "version_name": "1.0",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://kcmes.or.kr/edu/detail"
+      ],
+      "js": [
+        "content_script.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
